@@ -29,33 +29,41 @@ import './index.css'
 //     return <p>This is my message</p>
 // };
 // ReactDOM.render(<Greeting/>,document.getElementById('root'));
+const firstBook = {
+    img: 'https://target.scene7.com/is/image/Target/GUEST_856c906a-8925-43a5-8245-facaa4e947cc?wid=588&hei=588&qlt=80&fmt=webp',
+    title: 'Harry Potter and the Sorcerer\'s Stone',
+    author: 'J.K Rowling'
+}
+const secondBook = {
+    img: 'https://drdianehamilton.com/wp-content/uploads/2018/11/img-dia2.png',
+    title: 'The third stage of life',
+    author: 'Daisaku Ikeda'
+
+}
+
 
 function BookList() {
     return (
         <section className="bookList">
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
-            <Book />
+            <Book img={firstBook.img} title={firstBook.title} author={firstBook.author} >
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores deleniti harum in nam nobis optio quas? Atque deleniti dolores quam quis, similique sit tempora temporibus. Nobis non officia repellat!</p>
+            </Book>
+            <Book img={secondBook.img} title={secondBook.title} author={secondBook.author} />
         </section>
     );
 }
-const Book = () => {
-    return <article className="book">
-        <Image/>
-        <Title/>
-        <Author/>
-    </article>;
+
+const Book = ({img, title, author, children}) => {
+    // const {img, title, author} = props
+    return (
+        <article className="book">
+            <img src={img} alt=''/>
+            <h1>{title}</h1>
+            {children}
+            <h4>{author}</h4>
+        </article>
+    );
 };
-const Image = () => (
-    <img
-        src='https://drdianehamilton.com/wp-content/uploads/2018/11/img-dia2.png'
-        alt=""/>
-);
-const Title = () => <h1> The third stage of life</h1>;
-const Author = () => <h4>Daisaku Ikeda</h4>;
+
 
 ReactDOM.render(<BookList/>, document.getElementById('root'));
