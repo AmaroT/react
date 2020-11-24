@@ -40,10 +40,9 @@ function BookList() {
             <Book />
             <Book />
             <Book />
-
         </section>
-    )
-};
+    );
+}
 const Book = () => {
     return <article className="book">
         <Image/>
