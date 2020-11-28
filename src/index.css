@@ -19,7 +19,8 @@ body{
 @media screen and (min-width: 400px) {
     .bookList {
         grid-template-columns: repeat(3, 1fr);
-        align-items: start;
+        /*Each card will have its own height*/
+        /*align-items: start;*/
     }
 }
 .book {

@@ -3,63 +3,45 @@ import ReactDOM from 'react-dom';
 //Importing CSS
 import './index.css'
 
-//JSX RULES
-//RETURN SINGLE ELEMENT
-//DIV/SECTION/ ARTICLE OR FRAGMENT
-// USE CAMELCASE FOR HTML ATTRIBUTE
-//className instead of class
-//close every element
-//formatting
-//------
-//Nested Components, React Tools
-// ------
-//CSS
+const books = [
+    {
+        id: 1,
+        img: 'https://target.scene7.com/is/image/Target/GUEST_856c906a-8925-43a5-8245-facaa4e947cc?wid=588&hei=588&qlt=80&fmt=webp',
+        title: 'Harry Potter and the Sorcerer\'s Stone',
+        author: 'J.K Rowling',
+    },
+    {
+        id: 2,
+        img: 'https://drdianehamilton.com/wp-content/uploads/2018/11/img-dia2.png',
+        title: 'The third stage of life',
+        author: 'Daisaku Ikeda',
 
-// function Greeting () {
-//     return (
-//         <div>
-//             <Person />
-//             <Message />
-//         </div>
-//     );
-// };
-//
-// const Person = () => <h2>John Doe</h2>;
-// const Message = () => {
-//     return <p>This is my message</p>
-// };
-// ReactDOM.render(<Greeting/>,document.getElementById('root'));
-const firstBook = {
-    img: 'https://target.scene7.com/is/image/Target/GUEST_856c906a-8925-43a5-8245-facaa4e947cc?wid=588&hei=588&qlt=80&fmt=webp',
-    title: 'Harry Potter and the Sorcerer\'s Stone',
-    author: 'J.K Rowling'
-}
-const secondBook = {
-    img: 'https://drdianehamilton.com/wp-content/uploads/2018/11/img-dia2.png',
-    title: 'The third stage of life',
-    author: 'Daisaku Ikeda'
-
-}
-
+    },
+    {
+        id: 3,
+        img: 'https://images-na.ssl-images-amazon.com/images/I/51jNORv6nQL._SL350_.jpg',
+        title: 'Harry Potter and the Chamber of Secrets',
+        author: 'J.K Rowling',
+    },
+];
 
 function BookList() {
     return (
         <section className="bookList">
-            <Book img={firstBook.img} title={firstBook.title} author={firstBook.author} >
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores deleniti harum in nam nobis optio quas? Atque deleniti dolores quam quis, similique sit tempora temporibus. Nobis non officia repellat!</p>
-            </Book>
-            <Book img={secondBook.img} title={secondBook.title} author={secondBook.author} />
+            {books.map((book, index) => {
+                return <Book key={book.id} book={book}></Book>;
+            })}
         </section>
     );
 }
 
-const Book = ({img, title, author, children}) => {
-    // const {img, title, author} = props
+const Book = (props) => {
+    console.log(props);
+    const {img, title, author} = props.book;
     return (
         <article className="book">
             <img src={img} alt=''/>
             <h1>{title}</h1>
-            {children}
             <h4>{author}</h4>
         </article>
     );
